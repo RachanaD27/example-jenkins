@@ -6,8 +6,9 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2b4150dd-ba3d-4dad-86e1-24b9ef9c6ce9" >
-		<http:listener-connection host="0.0.0.0" port="8083" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="c4f5d30a-2885-43cf-9f5e-154f8d74d6e5" file="config.yaml" />
 	<flow name="example-jenkinsFlow" doc:id="036f5f9c-8626-412f-959e-15bef346fee7" >
 		<http:listener doc:name="Listener" doc:id="5a5a5b8d-5df5-4db7-886c-af7681a68abd" config-ref="HTTP_Listener_config" path="/example1"/>
 		<ee:transform doc:name="Transform Message" doc:id="72eef8ff-7d2f-4ef1-a639-64af7aa20b03" >

@@ -41,12 +41,53 @@
 <workers>${workers}</workers>
 <workerType>${vCore}</workerType>
 <objectStoreV2>true</objectStoreV2>
+<properties>
+<env>${env}</env>
+</properties>
 </cloudHubDeployment>
 </configuration>
 				
 			</plugin>
 		</plugins>
 	</build>
+
+
+<profiles>
+<!-- profile for dev -->
+<profile>
+<id>dev</id>
+<build>
+<finalName>${project.artifactId}-dev</finalName>
+<filters>
+<filter>src/main/resources/dev.properties</filter>
+</filters>
+</build>
+</profile>
+
+<!-- profile for uat -->
+<profile>
+<id>uat</id>
+<build>
+<finalName>${project.artifactId}-uat</finalName>
+<filters>
+<filter>src/main/resources/uat.properties</filter>
+</filters>
+</build>
+</profile>
+
+<!-- profile for prod -->
+<profile>
+<id>prod</id>
+
+<build>
+<finalName>${project.artifactId}-prod</finalName>
+<filters>
+<filter>src/main/resources/prod.properties</filter>
+</filters>
+</build>
+</profile>
+</profiles>
+
 
 	<dependencies>
 		<dependency>

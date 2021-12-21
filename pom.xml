@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>example-jenkins</artifactId>
+	<artifactId>example-jenkins1</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-	<name>example-jenkins</name>
+	<name>example-jenkins1</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,23 +28,23 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				
-				<configuration>
-<cloudHubDeployment>
-<uri>https://anypoint.mulesoft.com</uri>
-<muleVersion>${mule.version}</muleVersion>
-<username>${anypoint.username}</username>
-<password>${anypoint.password}</password>
-<applicationName>${appname}</applicationName>
-<businessGroup>${business}</businessGroup>
-<environment>${env}</environment>
-<workers>${workers}</workers>
-<workerType>${vCore}</workerType>
-<objectStoreV2>true</objectStoreV2>
- <properties>
-		<env>${properties}</env>
- </properties>
-</cloudHubDeployment>
-</configuration>
+			    <configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${mule.version}</muleVersion>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
+						<applicationName>${appname}</applicationName>
+						<businessGroup>${business}</businessGroup>
+						<environment>${env}</environment>
+						<workers>${workers}</workers>
+						<workerType>${vCore}</workerType>
+						<objectStoreV2>true</objectStoreV2>
+						<properties>
+							<env>${properties}</env>
+						</properties>
+					</cloudHubDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -105,8 +105,7 @@
 			</build>					
 		</profile>
 	</profiles> -->
-
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.mule.connectors</groupId>

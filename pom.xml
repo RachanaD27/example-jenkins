@@ -6,13 +6,11 @@
 	<artifactId>example-jenkins</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
 	<name>example-jenkins</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<app.runtime>4.3.0-20210622</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 	</properties>
@@ -29,6 +27,7 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				
 				<configuration>
 <cloudHubDeployment>
 <uri>https://anypoint.mulesoft.com</uri>
@@ -41,52 +40,71 @@
 <workers>${workers}</workers>
 <workerType>${vCore}</workerType>
 <objectStoreV2>true</objectStoreV2>
-<properties>
-<env>${env}</env>
-</properties>
+ <properties>
+		<env>${properties}</env>
+ </properties>
 </cloudHubDeployment>
 </configuration>
-				
 			</plugin>
 		</plugins>
 	</build>
 
-
-<profiles>
-<!-- profile for dev -->
-<profile>
-<id>dev</id>
-<build>
-<finalName>${project.artifactId}-dev</finalName>
-<filters>
-<filter>src/main/resources/dev.properties</filter>
-</filters>
-</build>
-</profile>
-
-<!-- profile for uat -->
-<profile>
-<id>uat</id>
-<build>
-<finalName>${project.artifactId}-uat</finalName>
-<filters>
-<filter>src/main/resources/uat.properties</filter>
-</filters>
-</build>
-</profile>
-
-<!-- profile for prod -->
-<profile>
-<id>prod</id>
-
-<build>
-<finalName>${project.artifactId}-prod</finalName>
-<filters>
-<filter>src/main/resources/prod.properties</filter>
-</filters>
-</build>
-</profile>
-</profiles>
+<!-- 	<profiles>
+	profile for dev
+		<profile>
+			<id>dev</id>
+			<activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>        
+			<build>
+			<finalName>${project.artifactId}-dev</finalName>
+				<filters>
+					<filter>src/main/resources/dev.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		profile for UAT
+		<profile>
+			<id>uat</id>
+			<properties>
+                <env>uat</env>
+            </properties>
+			<activation>
+                <property>
+                    <name>env</name>
+                    <value>uat</value>
+                </property>
+            </activation>
+			<build>
+				<finalName>${project.artifactId}-uat</finalName>
+				<filters>
+					<filter>src/main/resources/uat.properties</filter>
+				</filters>
+			</build>
+		</profile>
+		profile for prod
+		<profile>
+			<id>prod</id>
+			<properties>
+                <env>prod</env>
+            </properties>
+			<activation>
+                <property>
+                    <name>env</name>
+                    <value>prod</value>
+                </property>
+            </activation>
+			<build>
+				<finalName>${project.artifactId}-prod</finalName>
+				<filters>
+					<filter>src/main/resources/prod.properties</filter>
+				</filters>
+			</build>					
+		</profile>
+	</profiles> -->
 
 
 	<dependencies>

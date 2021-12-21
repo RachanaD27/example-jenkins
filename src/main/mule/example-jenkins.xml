@@ -11,15 +11,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<configuration-properties doc:name="Configuration properties" doc:id="c4f5d30a-2885-43cf-9f5e-154f8d74d6e5" file="config.yaml" />
 	<flow name="example-jenkinsFlow" doc:id="036f5f9c-8626-412f-959e-15bef346fee7" >
 		<http:listener doc:name="Listener" doc:id="5a5a5b8d-5df5-4db7-886c-af7681a68abd" config-ref="HTTP_Listener_config" path="/example1"/>
-		<ee:transform doc:name="Transform Message" doc:id="72eef8ff-7d2f-4ef1-a639-64af7aa20b03" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
-output application/json
----
-{
-	message: "hello welcome to jenkins"
-}]]></ee:set-payload>
-			</ee:message>
-		</ee:transform>
+		<set-payload value="#[p('body.payload')]" doc:name="Set Payload" doc:id="3a68c039-e24f-4df3-8222-b55cdbd1921f" />
 	</flow>
 </mule>

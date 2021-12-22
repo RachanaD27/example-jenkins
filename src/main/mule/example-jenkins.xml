@@ -14,4 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<http:listener doc:name="Listener" doc:id="5a5a5b8d-5df5-4db7-886c-af7681a68abd" config-ref="HTTP_Listener_config" path="/example1"/>
 		<set-payload value="#[p('body.payload')]" doc:name="Set Payload" doc:id="3a68c039-e24f-4df3-8222-b55cdbd1921f" />
 	</flow>
+	<flow name="example-jenkinsFlow1" doc:id="5b229d8e-12fb-4870-a6a2-cca3896aacbe" >
+		<http:listener doc:name="Listener" doc:id="49695e02-b0b8-4986-8c8e-80ecf87ac1ee" config-ref="HTTP_Listener_config"/>
+	</flow>
 </mule>

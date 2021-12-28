@@ -13,9 +13,9 @@ pipeline {
 							def deployusernamev= deployenv+'_DEPLOY_USERNAME'
 							def deploypasswordv=deployenv+'_DEPLOY_PASSWORD' 
 							def deployenvv=deployenv+'_DEPLOY_ENV'
-							def deployvCore=deployvCore+'_DEPLOY_VCORE'
-							def deployworkers=deployworkers+'_DEPLOY_WORKERS'
-							def deployproperties=deployproperties+'_DEPLOY_ENV'
+							def deployvCorev=deployvCore+'_DEPLOY_VCORE'
+							def deployworkersv=deployworkers+'_DEPLOY_WORKERS'
+							def deploypropertiesv=deployproperties+'_DEPLOY_ENV'
 							
 							
 						    def version = env."${versionv}"

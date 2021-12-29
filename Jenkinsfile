@@ -27,7 +27,7 @@ pipeline {
 							def deployproperties=env."${deployenv}"
 							
 
-                            bat 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=${version} -Danypoint.username=${username} -Danypoint.password=${password} -Denv=${env} -DvCore=${vCore} -Dworkers=${workers} -Dproperties=${env}'
+                            bat """mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=${version} -Danypoint.username=${username} -Danypoint.password=${password} -Denv=${env} -DvCore=${vCore} -Dworkers=${workers} -Dproperties=${env}"""
                          
 
 }

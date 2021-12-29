@@ -35,7 +35,6 @@
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
 						<applicationName>jenkins-integration-${env}</applicationName>
-						<businessGroup>${business}</businessGroup>
 						<environment>${env}</environment>
 						<workers>${workers}</workers>
 						<workerType>${vCore}</workerType>

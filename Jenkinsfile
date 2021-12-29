@@ -7,7 +7,7 @@ pipeline {
 						script{
                             
                             def deployenv =params.env
-                           // def branch = params.Branch
+                            def branch = params.Branch
 							
 							def versionv = deployenv+'_DEPLOY_MULE_VERSION'
 							

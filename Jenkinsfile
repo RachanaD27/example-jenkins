@@ -29,13 +29,10 @@ pipeline {
 							
 
                             bat """mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=${version} -Danypoint.username=${deployusername} -Danypoint.password=${deploypassword} -Denv=${deployenv} -DvCore=${deployvCore} -Dworkers=${deployworkers} -Dproperties=${deployenv}"""
-                     stage('input'){
-					steps{
-					input{ ok : 'submit'}    
-                            
+                    
 }
 }
 }
 } 
 }
-    }  
+  

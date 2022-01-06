@@ -1,0 +1,40 @@
+pipeline { 
+	agent any 	
+	stages {
+	   
+	    stage('Checkout SCM') {
+            steps {
+                checkout([$class: 'GitSCM',
+                       // branches: [[name: '*/main']],
+                        branches: [[name: "${params.Tags}"]],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [[$class: 'CleanCheckout']],
+                        submoduleCfg: [],
+                        userRemoteConfigs: [[url: 'https://github.com/RachanaD27/example-jenkins.git']]
+                ])
+            }
+        }
+        
+		/* dev deployment starts here*/
+		
+		stage('Build and Deploy to Anypoint platform DEV environment'){
+
+			 steps {
+						script{
+                            
+                            def deployenv ="dev"
+
+                            def version = "${env.dev_DEPLOY_MULE_VERSION}"
+                    		def deployusername="${env.dev_DEPLOY_USERNAME}" 
+							def deploypassword="${env.dev_DEPLOY_PASSWORD}" 
+							def deployvCore="${env.dev_DEPLOY_VCORE}"
+							def deployworkers="${env.dev_DEPLOY_WORKERS}" 
+					
+                            bat """mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=${version} -Danypoint.username=${deployusername} -Danypoint.password=${deploypassword} -Denv=${deployenv} -DvCore=${deployvCore} -Dworkers=${deployworkers} -Dproperties=${deployenv}"""
+                    
+}
+}
+}
+	
+}
+}

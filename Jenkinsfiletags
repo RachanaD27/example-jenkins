@@ -22,21 +22,15 @@ pipeline {
 }
 
 // creating the name of the tag
-sh '''#!/bin/bash -xe
-currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")
-customTagName="${CUSTOMER_NAME}--${POM_VERSION}--${currentDate}"
-echo CUSTOM_TAG_NAME=${customTagName} >> ${PROPERTIES_FILE_NAME}
-'''
-script {
-def PROPERTIES = readProperties file: "${PROPERTIES_FILE_NAME}"
-env.CUSTOM_TAG_NAME = PROPERTIES.CUSTOM_TAG_NAME
-}
-withCredentials([[$class: 'GitSCM']]) {
-sh("git tag -a ${CUSTOM_TAG_NAME} -m 'Jenkins'")
-sh("git push https://github.com/RachanaD27/example-jenkins.git ${CUSTOM_TAG_NAME}")
-}
-}
-}
+    void gitTag(Version releaseVersion) {
+      sshagent(['devops_deploy_DEV']) {
+        shell 'git tag -d \$(git tag)'
+        shell 'git fetch --tags'
+        echo "New release version ${releaseVersion.normalVersion}"
+        shell "git tag -fa ${releaseVersion.normalVersion} -m 'Release version ${releaseVersion.normalVersion}'"
+      }
+    }
+
 
         
 		/* dev deployment starts here*/

@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
+	<groupId>com.Nous</groupId>
 	<artifactId>example-jenkins1</artifactId>
 	<version>1.0.1</version>
 	<packaging>mule-application</packaging>
-	<name>example-jenkins1</name>
+	<name>jenkins-Jfrog</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -74,63 +74,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-<!-- 	<profiles>
-	profile for dev
-		<profile>
-			<id>dev</id>
-			<activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <env>dev</env>
-            </properties>        
-			<build>
-			<finalName>${project.artifactId}-dev</finalName>
-				<filters>
-					<filter>src/main/resources/dev.properties</filter>
-				</filters>
-			</build>
-		</profile>
-		profile for UAT
-		<profile>
-			<id>uat</id>
-			<properties>
-                <env>uat</env>
-            </properties>
-			<activation>
-                <property>
-                    <name>env</name>
-                    <value>uat</value>
-                </property>
-            </activation>
-			<build>
-				<finalName>${project.artifactId}-uat</finalName>
-				<filters>
-					<filter>src/main/resources/uat.properties</filter>
-				</filters>
-			</build>
-		</profile>
-		profile for prod
-		<profile>
-			<id>prod</id>
-			<properties>
-                <env>prod</env>
-            </properties>
-			<activation>
-                <property>
-                    <name>env</name>
-                    <value>prod</value>
-                </property>
-            </activation>
-			<build>
-				<finalName>${project.artifactId}-prod</finalName>
-				<filters>
-					<filter>src/main/resources/prod.properties</filter>
-				</filters>
-			</build>					
-		</profile>
-	</profiles> -->
 	
 	<dependencies>
 		<dependency>

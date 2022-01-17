@@ -172,6 +172,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</pluginRepository>
+		
+		
+ 	 <pluginRepository>
+   		 <id>Maven-Artifactory-Plugin</id>
+    	<url>https://jcenter.bintray.com</url>
+  	 </pluginRepository>
+
 	</pluginRepositories>
+	
+	
 
 </project>

@@ -22,6 +22,33 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
+			
+			
+			<plugin>
+				<groupId>org.jfrog.buildinfo</groupId>
+				<artifactId>artifactory-maven-plugin</artifactId>
+				<version>2.6.1</version>
+     			<inherited>false</inherited>
+				<executions>
+					<execution>
+						<id>build-info</id>
+						<goals>
+							<goal>publish</goal>					
+						</goals>
+						<configuration>
+							<publisher>
+								<contextUrl>https://rachanad1.jfrog.io/artifactory/jenkins-libs-snapshot-local</contextUrl>
+								<username>rachanad@nousinfo.com</username>
+								<password>Jfrog@123</password>
+								<repoKey>jenkins-libs-release-local</repoKey>
+								<snapshotRepoKey>jenkins-libs-snapshot-local</snapshotRepoKey>
+							</publisher>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>

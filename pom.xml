@@ -37,7 +37,7 @@
 						</goals>
 						<configuration>
 							<publisher>
-								<contextUrl>https://rachanad1.jfrog.io/artifactory/jenkins-libs-snapshot-local</contextUrl>
+								<contextUrl>https://rachanad1.jfrog.io/artifactory</contextUrl>
 								<username>rachanad@nousinfo.com</username>
 								<password>Jfrog@123</password>
 								<repoKey>jenkins-libs-release-local</repoKey>

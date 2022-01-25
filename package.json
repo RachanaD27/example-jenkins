@@ -1,0 +1,16 @@
+{
+"name": "postman-newman-jenkins",
+"version": "1.0.0",
+"description": "My Test Project",
+"directories": {
+"tests": "tests"
+},
+"scripts": {
+"newman-dev-tests": "newman run https://www.getpostman.com/collections/1b72c685705ce6619d42 --disable-unicode",
+"newman-uat-tests": "newman run https://www.getpostman.com/collections/1b72c685705ce6619d42 --disable-unicode"
+},
+"author": "Test Author",
+"dependencies": {
+"newman": "^5.3.1"
+}
+}

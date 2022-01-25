@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.Nous</groupId>
-	<artifactId>example-jenkins1</artifactId>
+	<artifactId>example-jenkins2</artifactId>
 	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 	<name>jenkins-Jfrog</name>

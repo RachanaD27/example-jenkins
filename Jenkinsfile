@@ -1,5 +1,8 @@
 pipeline { 
-	agent any 	
+	agent any 
+		environment{
+        TESTCREDS = credentials('anypoint_credentials')
+        }	
 		stages {
 				stage('Build and Deploy to Standalone Server'){
 
@@ -28,7 +31,7 @@ pipeline {
 							def deployproperties=env."${deployenv}"
 							
 
-                            bat """mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=${version} -Danypoint.username=${deployusername} -Danypoint.password=${deploypassword} -Denv=${deployenv} -DvCore=${deployvCore} -Dworkers=${deployworkers} -Dproperties=${deployenv}"""
+                            bat """mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=${version} -Danypoint.username=${TESTCREDS_USR} -Danypoint.password=${TESTCREDS_PSW} -Denv=${deployenv} -DvCore=${deployvCore} -Dworkers=${deployworkers} -Dproperties=${deployenv}"""
                     
 }
 }

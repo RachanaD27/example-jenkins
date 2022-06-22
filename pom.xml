@@ -23,33 +23,7 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
-			
-			
-			<!--<plugin>
-				<groupId>org.jfrog.buildinfo</groupId>
-				<artifactId>artifactory-maven-plugin</artifactId>
-				<version>2.6.1</version>
-     			<inherited>false</inherited>
-				<executions>
-					<execution>
-						<id>build-info</id>
-						<goals>
-							<goal>publish</goal>					
-						</goals>
-						<configuration>
-							<publisher>
-								<contextUrl>https://rachanad1.jfrog.io/artifactory</contextUrl>
-								<username>rachanad@nousinfo.com</username>
-								<password>Jfrog@123</password>
-								<repoKey>jenkins-libs-release-local</repoKey>
-								<snapshotRepoKey>jenkins-libs-snapshot-local</snapshotRepoKey>
-							</publisher>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin> -->
-			
-			
+						
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -73,6 +47,37 @@
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>2.3.6</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<coverage>
+						<runCoverage>true</runCoverage> <!--tag for the runCoverage parameter-->
+						<failBuild>true</failBuild><!--tag to check if build fails-->
+					    <requiredApplicationCoverage>100</requiredApplicationCoverage><!--tag to set the percentage of application coverage-->
+					    <requiredResourceCoverage>100</requiredResourceCoverage><!--tag to set the percentage of resource coverage-->
+					    <requiredFlowCoverage>100</requiredFlowCoverage><!--tag to set the percentage of flow coverage-->
+						<formats>
+							<format>html</format><!--tag to set format of code coverage report-->
+						</formats>
+						<ignoreFlows>
+        					<ignoreFlow>packageFlow</ignoreFlow><!--tag to ignore flows in the project-->      
+    					</ignoreFlows>
+						
+					</coverage>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	
@@ -89,7 +94,22 @@
 			<version>1.2.1</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>2.3.6</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<version>2.3.6</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+	
 
 	<repositories>
 		<repository>
@@ -104,6 +124,7 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
+		
 	</repositories>
 
 	<pluginRepositories>
